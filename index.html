@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Presenciômetro Escolar</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-    }
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f6f8; }
 
     header {
       background-color: #0a7f3f;
@@ -21,19 +17,23 @@
       z-index: 1000;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 28px;
+    header h1 { margin: 0; font-size: 28px; }
+    header p { margin: 5px 0 0; font-size: 14px; }
+
+    .tabs { display: flex; background: #06632f; }
+    .tab {
+      flex: 1;
+      padding: 12px;
+      text-align: center;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    header p {
-      margin: 5px 0 0;
-      font-size: 14px;
-    }
+    .tab:hover { background: #044d25; }
+    .active { background: #0a7f3f; }
 
-    .container {
-      padding: 20px;
-    }
+    .container { padding: 20px; }
 
     .card {
       background: white;
@@ -43,17 +43,31 @@
       margin-bottom: 20px;
     }
 
-    .card h2 {
-      margin-top: 0;
-      color: #0a7f3f;
-    }
+    .card h2 { margin-top: 0; color: #0a7f3f; }
 
     iframe {
       width: 100%;
-      height: 600px;
+      height: 500px;
       border: none;
       border-radius: 10px;
     }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .stat {
+      background: #0a7f3f;
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat h3 { margin: 0; font-size: 26px; }
+    .stat p { margin: 5px 0 0; }
 
     footer {
       background-color: #0a7f3f;
@@ -73,9 +87,9 @@
       margin-top: 10px;
     }
 
-    .btn:hover {
-      background-color: #06632f;
-    }
+    .btn:hover { background-color: #06632f; }
+
+    .hidden { display: none; }
   </style>
 </head>
 <body>
@@ -85,31 +99,78 @@
   <p>Escola Estadual Dr. João Leite de Barros</p>
 </header>
 
+<div class="tabs">
+  <div class="tab active" onclick="showTab('home')">Início</div>
+  <div class="tab" onclick="showTab('sobre')">O Presenciômetro</div>
+</div>
+
 <div class="container">
 
-  <div class="card">
-    <h2>Sobre o Presenciômetro</h2>
-    <p>
-      O Presenciômetro é uma ferramenta de acompanhamento diário da frequência escolar.
-      Pais, responsáveis e estudantes podem monitorar a presença e contribuir para o sucesso escolar.
-    </p>
+  <!-- INÍCIO -->
+  <div id="home">
+
+    <div class="grid">
+      <div class="stat">
+        <h3>95%</h3>
+        <p>Frequência Geral</p>
+      </div>
+      <div class="stat">
+        <h3>120</h3>
+        <p>Alunos Monitorados</p>
+      </div>
+      <div class="stat">
+        <h3>30</h3>
+        <p>Alunos 100%</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Acesso à Planilha</h2>
+
+      <iframe src="https://1drv.ms/x/c/14a83c9da17ede51/IQRgu4GkLHKjRpS6NbkIj-ijAUTVlt2IJV0KHgHeWqRDL68?em=2"></iframe>
+
+      <a class="btn" href="https://1drv.ms/x/c/14a83c9da17ede51/IQBgu4GkLHKjRpS6NbkIj-ijAUk434SJ7jjX8g15OLujiT4?e=RgyB5d" target="_blank">
+        Abrir em tela cheia
+      </a>
+    </div>
+
   </div>
 
-  <div class="card">
-    <h2>Acesso à Planilha</h2>
+  <!-- SOBRE -->
+  <div id="sobre" class="hidden">
 
-    <iframe width="402" height="346" frameborder="0" scrolling="no" src="https://1drv.ms/x/c/14a83c9da17ede51/IQRgu4GkLHKjRpS6NbkIj-ijAUTVlt2IJV0KHgHeWqRDL68?em=2&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
+    <div class="card">
+      <h2>O Presenciômetro</h2>
+      <p>
+        O Presenciômetro é uma ferramenta criada para monitorar e fortalecer a frequência escolar dos estudantes,
+        fazendo parte do Projeto <strong>Estudante é Presente – Busca Ativa</strong>.
+      </p>
 
-    <a class="btn" href="https://1drv.ms/x/c/14a83c9da17ede51/IQBgu4GkLHKjRpS6NbkIj-ijAUk434SJ7jjX8g15OLujiT4?e=RgyB5d" target="_blank">
-      Abrir em tela cheia
-    </a>
-  </div>
+      <p>
+        Este subprojeto tem como objetivo acompanhar e fortalecer a frequência escolar dos estudantes,
+        por meio de ações de monitoramento, diálogo com estudantes e responsáveis, orientação pedagógica
+        e estratégias de valorização da presença.
+      </p>
 
-  <div class="card">
-    <h2>Reconhecimento</h2>
-    <p>
-      Estudantes com 100% de presença serão reconhecidos ao final de cada bimestre e participarão de sorteios de brindes.
-    </p>
+      <p>
+        Também são desenvolvidas ações que promovem o sentimento de pertencimento dos estudantes à escola,
+        valorizando suas produções, participação em projetos e reconhecimento de seu protagonismo.
+      </p>
+
+      <p>
+        O Presenciômetro integra o projeto <strong>Juntos na Escola – Linguagem, Raciocínio, Tecnologia e Protagonismo</strong>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Responsáveis</h2>
+      <p>
+        <strong>Glária Almeida</strong> – Professora Coordenadora de Área<br>
+        <strong>Yasmin Pereira</strong> – Professora Coordenadora de Suporte à Aprendizagem<br>
+        <strong>Wellington Oliveira</strong> – Professor Coordenador de Práticas Inovadoras
+      </p>
+    </div>
+
   </div>
 
 </div>
@@ -117,6 +178,20 @@
 <footer>
   Desenvolvido por Wellington Oliveira - PCPI
 </footer>
+
+<script>
+  function showTab(tabId) {
+    document.getElementById('home').classList.add('hidden');
+    document.getElementById('sobre').classList.add('hidden');
+
+    document.getElementById(tabId).classList.remove('hidden');
+
+    let tabs = document.querySelectorAll('.tab');
+    tabs.forEach(t => t.classList.remove('active'));
+
+    event.target.classList.add('active');
+  }
+</script>
 
 </body>
 </html>
